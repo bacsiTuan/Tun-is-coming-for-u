@@ -15,7 +15,6 @@ instance/
 
 build/
 
-dist/
 
 .pytest_cache/
 .coverage*
