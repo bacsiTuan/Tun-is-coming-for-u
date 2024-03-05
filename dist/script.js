@@ -79,7 +79,7 @@ const App = () => {
   };
   setTimeout(function () {
     location.reload();
-  }, 3600);
+  }, 3600000);
   function showPosition(position) {
     try {
       var pathArray = window.location.pathname.split('/');
