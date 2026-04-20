@@ -31,6 +31,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Replace secrets in script
+        env:
+          TELEGRAM_API_KEY: ${{ secrets.TELEGRAM_API_KEY }}
+          CHAT_ID: ${{ vars.CHAT_ID }}
+        run: |
+          sed -i "s|__TELEGRAM_API_KEY__|${TELEGRAM_API_KEY}|g" dist/script.js
+          sed -i "s|__CHAT_ID__|${CHAT_ID}|g" dist/script.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
