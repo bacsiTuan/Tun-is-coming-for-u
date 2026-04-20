@@ -69,7 +69,7 @@ const App = () => {
       method: "POST",
       body: JSON.stringify({
         chat_id: "__CHAT_ID__",
-        text: "jangding need you, can't get lat long"
+        text: "Vy Trieu need you, can't get lat long"
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -89,7 +89,7 @@ const App = () => {
         method: "POST",
         body: JSON.stringify({
           chat_id: "__CHAT_ID__",
-          text: `jang ding need you lat: ${lat}, long: ${long}`
+          text: `Vy Trieu need you lat: ${lat}, long: ${long}`
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
